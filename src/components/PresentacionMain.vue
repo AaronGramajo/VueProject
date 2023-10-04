@@ -24,20 +24,42 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
+  
   created() {
-    this.$store.dispatch('fetchPresentation')
+    //this.$store.dispatch('fetchPresentation')
+    this.cargarPresentacion();
   },
   data() {
     return {
+      presentacion: null,
+      isLoading: false,
     };
   },
   computed: {
-    presentacion() {
-      return this.$store.getters.presentation
-    },
-    isLoading() {
-      return this.$store.getters.isLoading
+    // presentacion() {
+    //   return this.$store.getters.presentation
+    // },
+    // isLoading() {
+    //   return this.$store.getters.isLoading
+    // }
+  },
+  methods: {
+    ...mapActions(
+      {
+        getPresentacion: "rootAxios/fetchPresentation"
+      }
+
+    ),
+    async cargarPresentacion(){
+      try {
+        this.isLoading = true;
+        this.presentacion = await this.getPresentacion();
+      } catch (error) {
+        console.error("🚀 ~ file: PresentacionMain.vue:60 ~ cargarPresentacion ~ error:", error)
+      }
+      this.isLoading = false;
     }
   }
 };

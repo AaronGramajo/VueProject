@@ -3,6 +3,7 @@ import axiosGetters from "./axiosGetters";
 import axiosMutations from "./axiosMutations";
 
 export default {
+  namespaced: true,
   state() {
     return {
       presentation: '',

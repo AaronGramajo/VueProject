@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 export default {
-  async fetchPresentation(context) {
+  async fetchPresentation() {
     try {
       const data = await axios.get(
         "https://pil-2023-land-default-rtdb.firebaseio.com/personajes/Aaron/presentacion.json"
       )
-      context.commit('setPresentation', {setData: data.data, setLoader: false})
+      return data?.data;
     } catch (error) {
       console.log(error)
     }
