@@ -28,7 +28,6 @@ import { mapActions } from 'vuex';
 export default {
   
   created() {
-    //this.$store.dispatch('fetchPresentation')
     this.cargarPresentacion();
   },
   data() {
@@ -37,18 +36,10 @@ export default {
       isLoading: false,
     };
   },
-  computed: {
-    // presentacion() {
-    //   return this.$store.getters.presentation
-    // },
-    // isLoading() {
-    //   return this.$store.getters.isLoading
-    // }
-  },
   methods: {
     ...mapActions(
       {
-        getPresentacion: "rootAxios/fetchPresentation"
+        getPresentacion: "rootAxios/fetchPresentacion"
       }
 
     ),
@@ -57,7 +48,7 @@ export default {
         this.isLoading = true;
         this.presentacion = await this.getPresentacion();
       } catch (error) {
-        console.error("🚀 ~ file: PresentacionMain.vue:60 ~ cargarPresentacion ~ error:", error)
+        console.error(error)
       }
       this.isLoading = false;
     }

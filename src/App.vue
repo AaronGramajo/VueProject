@@ -2,7 +2,7 @@
 <template>
   <v-app>
     <NavBar v-if="isHome"/>
-    <v-main>
+    <v-main style="background: linear-gradient(63deg, rgba(70,59,161,1) 0%, rgba(225,225,225,1) 33%, rgba(70,59,161,1) 100%);">
       <router-view></router-view>
     </v-main>
     <FooterVue/>

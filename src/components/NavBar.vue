@@ -3,7 +3,7 @@
         <div>
           <v-tooltip right>
             <template v-slot:activator="{ on, attrs }">
-              <router-link to="/"><v-btn @click="quitarNavbar" prepend-icon="$vuetify" v-bind="attrs" v-on="on"><v-icon>mdi-home</v-icon></v-btn></router-link>
+              <router-link to="/"><v-btn prepend-icon="$vuetify" v-bind="attrs" v-on="on"><v-icon>mdi-home</v-icon></v-btn></router-link>
             </template>
             <span>Ir a Home</span>
           </v-tooltip>
@@ -23,11 +23,6 @@
 
 <script>
 export default {
-    name: 'NavBar',
-    methods: {
-      quitarNavbar() {
-        this.$store.dispatch('quitarNavbar')
-      }
-    }
+    name: 'NavBar'
 };
 </script>

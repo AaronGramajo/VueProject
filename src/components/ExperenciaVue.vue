@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
   name: "ExperenciaVue",
 
@@ -50,29 +50,34 @@ export default {
     };
   },
   created() {
-    this.setEducacions();
-    this.setExperencias();
+    this.setearEducacions();
+    this.setearExperencias();
   },
   methods: {
-    async setEducacions() {
-      await this.getEducation();
-      this.educaciones = this.education;
+    ...mapActions({
+      getEducacion: "rootAxios/getEducacion",
+      getExperencias: "rootAxios/getExperencias"
+    }),
+    async setearEducacions() {
+      try {
+        this.educaciones = await this.getEducacion();
+      } catch (error) {
+        console.error(error)
+      }
       this.isLoadingEducaciones = true;
     },
-    async setExperencias() {
-      await this.getExperience();
-      this.experencias = this.experience;
-      console.log(this.experencias);
+    async setearExperencias() {
+      try {
+        this.experencias = await this.getExperencias();
+      } catch (error) {
+        console.error(error)
+      }
       this.isLoadingExperencia = true;
     },
     abrirPagina(link) {
       window.open(link, "_blank");
-    },
-    ...mapActions(["getEducation", "getExperience"]),
-  },
-  computed: {
-    ...mapGetters(["experience", "education"]),
-  },
+    }
+  }
 };
 </script>
 
