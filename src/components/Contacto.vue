@@ -122,7 +122,7 @@ export default {
 
       try {
         const res = await this.postForm(formData)
-        if (res.status == 200) {
+        if (res.status === 200) {
           this.mandarMensaje()
           this.reset()
         } else {

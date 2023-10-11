@@ -2,7 +2,7 @@
   <div>
     <v-card class="mx-auto mt-10 overflow-auto" max-width="600">
       <v-card-title>Experencia:</v-card-title>
-      <div v-if="isLoadingExperencia">
+      <div v-if="!isLoadingExperencia">
         <div v-for="experencia in experencias" :key="experencia.titulo">
           <v-card-text class="text-overline font-weight-black pb-0">{{
             experencia.titulo
@@ -20,7 +20,7 @@
 
     <v-card class="mx-auto mt-10 overflow-auto mb-10" max-width="600">
       <v-card-title>Educacion:</v-card-title>
-      <div v-if="isLoadingEducaciones">
+      <div v-if="!isLoadingEducaciones">
         <div v-for="educacion in educaciones" :key="educacion.titulo">
           <v-card-text class="text-overline font-weight-black pb-0 pt-0">{{
             educacion.titulo
@@ -37,6 +37,7 @@
 
 <script>
 import { mapActions } from "vuex";
+
 export default {
   name: "ExperenciaVue",
 
@@ -56,28 +57,30 @@ export default {
   methods: {
     ...mapActions({
       getEducacion: "rootAxios/getEducacion",
-      getExperencias: "rootAxios/getExperencias"
+      getExperencias: "rootAxios/getExperencias",
     }),
     async setearEducacions() {
+      this.isLoadingEducaciones = true;
       try {
         this.educaciones = await this.getEducacion();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-      this.isLoadingEducaciones = true;
+      this.isLoadingEducaciones = false;
     },
     async setearExperencias() {
+      this.isLoadingExperencia = true;
       try {
         this.experencias = await this.getExperencias();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-      this.isLoadingExperencia = true;
+      this.isLoadingExperencia = false;
     },
     abrirPagina(link) {
       window.open(link, "_blank");
-    }
-  }
+    },
+  },
 };
 </script>
 

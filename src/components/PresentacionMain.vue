@@ -8,10 +8,10 @@
             {{ presentacion }}
           </div>
           <v-skeleton-loader
-          width="900"
-          type="article"
-          v-else
-        ></v-skeleton-loader>
+            width="900"
+            type="article"
+            v-else
+          ></v-skeleton-loader>
         </v-card-text>
       </v-card>
       <v-img
@@ -24,9 +24,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
-  
   created() {
     this.cargarPresentacion();
   },
@@ -37,21 +36,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions(
-      {
-        getPresentacion: "rootAxios/fetchPresentacion"
-      }
-
-    ),
-    async cargarPresentacion(){
+    ...mapActions({
+      getPresentacion: "rootAxios/fetchPresentacion",
+    }),
+    async cargarPresentacion() {
       try {
         this.isLoading = true;
         this.presentacion = await this.getPresentacion();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
       this.isLoading = false;
-    }
-  }
+    },
+  },
 };
 </script>
