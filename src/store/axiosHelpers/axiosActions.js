@@ -40,7 +40,7 @@ export default {
     try {
       return await axios.post('https://pil-2023-land-default-rtdb.firebaseio.com/contacto/Aaron.json', payload)
     } catch (error) {
-      console.error('no se pudo mandar los datos', error)
+      console.error('No se pudo mandar los datos', error)
     }
   }
 }

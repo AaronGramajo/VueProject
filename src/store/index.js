@@ -1,11 +1,13 @@
 import rootActions from './rootActions.js'
 import rootMutations from './rootMutations.js'
 import rootGetters from './rootGetters.js'
-import rootAxios from './axiosHelpers/axiosIndex'
+import rootAxios from './axiosHelpers/axiosIndex.js'
+import rootAptitudes from './aptitudes/aptitudesIndex.js'
 
 export default {
   modules: {
-    rootAxios: rootAxios
+    rootAxios: rootAxios,
+    rootAptitudes: rootAptitudes
   },
   state() {
     return {

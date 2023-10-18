@@ -15,7 +15,7 @@
         <div class="d-flex align-center">
             <router-link to="/presentacion"><v-btn prepend-icon="$vuetify">Presentacion</v-btn></router-link>
             <router-link to="/experencia"><v-btn prepend-icon="$vuetify">Experiencia y educacion</v-btn></router-link>
-            <router-link to="/*"><v-btn prepend-icon="$vuetify">Aptitudes</v-btn></router-link>
+            <router-link to="/aptitudes"><v-btn prepend-icon="$vuetify">Aptitudes</v-btn></router-link>
             <router-link to="/contacto"><v-btn prepend-icon="$vuetify">Contacto</v-btn></router-link>
         </div>
     </v-app-bar>
